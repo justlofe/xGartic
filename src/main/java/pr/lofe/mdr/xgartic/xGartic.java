@@ -18,7 +18,7 @@ public final class xGartic extends JavaPlugin {
     private GameManager gameManager;
 
     @Override
-    public void onEnable() {1
+    public void onEnable() {
         saveDefaultConfig();
 
         I = this;

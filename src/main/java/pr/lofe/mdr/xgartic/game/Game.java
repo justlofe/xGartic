@@ -94,7 +94,6 @@ public class Game extends ConfigAccessor {
     private void letBuild(Player player, Room room) {
         Location loc = Point.fromPoint(room.spawn(), gameProvider.getWorld());
         player.teleport(loc);
-
     }
     private void completeBuild(Player player) {
 
