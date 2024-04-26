@@ -1,0 +1,27 @@
+display:
+  messages:
+    reloaded: "Configuration reloaded"
+
+    game:
+      showing_theme: "%name% >> %theme%<n>"
+      showing_build: "%name% >> ..."
+  bars:
+    game_search: "Поиск игры... В очереди %queue%/14"
+    game_starting: "Начало игры через %countdown%... (%queue%/14)"
+    lobby_waiting: "Ожидание лидера лобби. В лобби %lobby%/14"
+    lobby_starting: "Начало игры через %countdown%... (%lobby%/14)"
+  title:
+    black: "ꐐ"
+  invs:
+    describe:
+      title: ""
+    lobby:
+      title: "<white>ꐮꐮꐫꐑ</white>"
+    main:
+      title: "<white>ꐮꐮꐫꑼ</white>"
+
+map:
+  world: overworld
+  rooms:
+    - "room:::point:-250:409:213:::cuboid::point:-262:432:225::point:-238:408:201"
+    - "room:::point:-250:409:186:::cuboid::point:-262:432:199::point:-238:408:175"

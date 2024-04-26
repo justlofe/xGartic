@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="xGartic:jar">
+    <output-path>$USER_HOME$/Desktop/build</output-path>
+    <root id="archive" name="xGartic.jar">
+      <element id="module-output" name="xGartic" />
+    </root>
+  </artifact>
+</component>
