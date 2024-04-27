@@ -4,12 +4,12 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import pr.lofe.mdr.xgartic.util.TextWrapper;
 
-public class ChatMessage extends DisplayObject {
+public class IChatMessage extends DisplayObject {
 
     private final String input;
     private final boolean mini;
 
-    public ChatMessage(String string, boolean isMini) {
+    public IChatMessage(String string, boolean isMini) {
         input = string;
         mini = isMini;
     }

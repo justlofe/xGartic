@@ -16,6 +16,7 @@ public final class xGartic extends JavaPlugin {
     private LobbyManager lobbyManager;
     private ItemManager itemManager;
     private GameManager gameManager;
+    private DisplayManager displayManager;
 
     @Override
     public void onEnable() {
@@ -27,6 +28,7 @@ public final class xGartic extends JavaPlugin {
         lobbyManager = new LobbyManager();
         itemManager = new ItemManager();
         gameManager = new GameManager();
+        displayManager = new DisplayManager();
 
         Bukkit.getPluginManager().registerEvents(new DebugListener(), this);
 
@@ -46,4 +48,5 @@ public final class xGartic extends JavaPlugin {
     public static LobbyManager getLobbies() { return I.lobbyManager; }
     public static ItemManager getItems() { return I.itemManager; }
     public static GameManager getGames() { return I.gameManager; }
+    public static DisplayManager getDisplay() { return I.displayManager; }
 }

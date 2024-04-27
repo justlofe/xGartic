@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TextWrapper {
 
-    private final static List<String> fonts =new ArrayList<>(){{
+    private final static List<String> fonts = new ArrayList<>(){{
         add("а,ᴀ");
         add("е,ᴇ");
         add("р,ᴘ");
