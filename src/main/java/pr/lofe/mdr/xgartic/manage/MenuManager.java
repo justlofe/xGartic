@@ -113,11 +113,4 @@ public class MenuManager extends ConfigAccessor {
         }
     }
 
-    public static class DescribeHolder implements GarticHolder {
-        private final Inventory inventory = Bukkit.createInventory(this, 27);
-        @Override public @NotNull Inventory getInventory() {
-            return inventory;
-        }
-    }
-
 }

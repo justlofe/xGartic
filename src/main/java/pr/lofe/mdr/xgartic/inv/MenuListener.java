@@ -117,19 +117,6 @@ public class MenuListener extends ConfigAccessor implements Listener {
                     }
                 }
             }
-            else if (holder instanceof MenuManager.DescribeHolder) {
-                if (click == ClickType.RIGHT) {
-                    AnvilInventory anv = (AnvilInventory) inv;
-                    ItemStack accept = anv.getSecondItem();
-                    if (accept != null) {
-                        accept.editMeta(meta -> meta.lore(TextWrapper.wrapArray( //отпᴘᴀвить отвᴇт пкм отпᴘᴀвить
-                                "",
-                                "<white><color:#4287f5>|</color> " + TextWrapper.mini(anv.getRenameText()) + "</white>"
-                        )));
-                        inv.setItem(1, accept);
-                    }
-                }
-            }
         }
     }
 

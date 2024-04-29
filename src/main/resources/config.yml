@@ -5,6 +5,9 @@ display:
     game:
       showing_theme: "%name% >> %theme%<n>"
       showing_build: "%name% >> ..."
+      start_build: "<br><color:#d68fff>|</color> нᴀчᴀло стᴘоитᴇльствᴀ!<br><color:#d68fff>|</color> тᴇмᴀ для постᴘойки: <gradient:#654aff:#ce47ff>%theme%</gradient><br>"
+      start_texting: "<br><color:#d68fff>|</color> пᴘидʏмᴀйтᴇ тᴇмʏ для постᴘойки!<br><color:#d68fff>|</color> пᴘимᴇᴘ: <gradient:#654aff:#ce47ff>ᴘозовый гʏсь смотᴘит в окно</gradient><br>"
+      describe_build: "<br><color:#d68fff>|</color> опишитᴇ постᴘойкʏ, котоᴘʏю видитᴇ!<br>"
   bars:
     lobby_waiting: "Ожидание лидера лобби. В лобби %lobby%/14"
     lobby_starting: "Начало игры через %countdown%... (%lobby%/14)"
