@@ -2,10 +2,13 @@ package pr.lofe.mdr.xgartic.game;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import io.papermc.paper.event.player.AsyncChatEvent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -14,11 +17,15 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.inventory.ItemStack;
+import pr.lofe.mdr.xgartic.game.obj.GameObject;
 import pr.lofe.mdr.xgartic.game.obj.Point;
 import pr.lofe.mdr.xgartic.game.obj.Room;
+import pr.lofe.mdr.xgartic.game.obj.Text;
 import pr.lofe.mdr.xgartic.xGartic;
 
 public class GameController implements Listener {
+
+    private final static MiniMessage mm = MiniMessage.miniMessage();
 
     private final static ImmutableList<Material> blockedItems = ImmutableList.copyOf(Lists.newArrayList(Material.COMMAND_BLOCK,
             Material.COMMAND_BLOCK_MINECART,
@@ -110,7 +117,7 @@ public class GameController implements Listener {
             Material.HOPPER
     ));
 
-    private final Game game;
+    private final Game  game;
 
     public GameController(Game game) {
         this.game = game;
@@ -177,6 +184,19 @@ public class GameController implements Listener {
             Room room = game.getAssigns().get(player);
             if(room != null) {
                 if(!room.zone().isIn(point)) player.teleport(Point.fromPoint(room.spawn(), game.getProvider().getWorld()));
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR) public void onAsyncChat(AsyncChatEvent event) {
+        if(!event.isCancelled()) {
+            Player player = event.getPlayer();
+            if(game.getPlayers().contains(player)) {
+                GameObject obj = game.getByPlayer(player);
+                if(obj instanceof Text text) {
+                    if(text.isCompleted()) event.setCancelled(true);
+                    else game.completeWrite(player, mm.serialize(event.originalMessage()));
+                }
             }
         }
     }

@@ -5,6 +5,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
+import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pr.lofe.mdr.xgartic.config.ConfigAccessor;
@@ -105,6 +106,10 @@ public class Game extends ConfigAccessor {
         return false;
     }
 
+    public int getStage() {
+        return stage;
+    }
+
     public GameObject getByPlayer(Player player) {
         for(int x = 0; x < maxStage; x++) {
             GameObject object = chains[x][stage];
@@ -149,10 +154,14 @@ public class Game extends ConfigAccessor {
                     .show(player);
         }
     }
-    private void completeWrite(Player player, String string) {
+    public void completeWrite(Player player, String string) {
         GameObject object = getByPlayer(player);
         if(object instanceof Text text) {
             text.complete(string);
+
+            new IChatMessage(cfg().getString("display.messages.game.text_completed", ""), false)
+                    .show(player);
+
             completeObject(false);
         }
     }

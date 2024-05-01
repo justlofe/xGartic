@@ -41,6 +41,10 @@ public class TextWrapper {
         return MiniMessage.miniMessage().deserialize(text).decoration(TextDecoration.ITALIC, false);
     }
 
+    public static void main(String[] args) {
+        System.out.println(mini("вы завершилки постройку, ожидайте других участников"));
+    }
+
     public static String mini(String text) {
         String result = text;
         for(String raw : fonts) {
