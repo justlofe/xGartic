@@ -7,7 +7,7 @@ public record Room(Point spawn, Cuboid zone) {
 
     public static Room fromString(String string) {
         String[] unboxed = string.split(":::");
-        if (unboxed.length == 3 && unboxed[0].equals("cuboid")) {
+        if (unboxed.length == 3 && unboxed[0].equals("room")) {
             return new Room(Point.fromString(unboxed[1]), Cuboid.fromString(unboxed[2]));
         }
         return null;

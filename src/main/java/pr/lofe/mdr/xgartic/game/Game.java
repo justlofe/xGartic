@@ -73,6 +73,7 @@ public class Game extends ConfigAccessor {
         for(String raw : cfg().getStringList("map.rooms")) {
             Room room = Room.fromString(raw);
             availableRooms.add(room);
+            xGartic.I.getLogger().warning("loaded room: " + room);
         }
     }
 
