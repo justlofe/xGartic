@@ -7,10 +7,13 @@ import pr.lofe.mdr.xgartic.util.WorldUtil;
 
 public class GameProvider {
 
-    private final World world;
+    private World world;
 
-    public GameProvider(World base, String id) {
-        this.world = WorldUtil.copyWorld(base, id);
+    public GameProvider() {}
+
+    public void load(World base, String id) {
+        World world = WorldUtil.copyWorld(base, id);
+        this.world = world == null ? Bukkit.getWorld(id) : world;
     }
 
     public void unload() {

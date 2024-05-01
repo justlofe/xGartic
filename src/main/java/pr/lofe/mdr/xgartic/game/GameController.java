@@ -133,7 +133,7 @@ public class GameController implements Listener {
     }
 
     @EventHandler public void onWorldLoad(WorldLoadEvent event) {
-        if(event.getWorld().getName().equals(game.getProvider().getWorld().getName())) {
+        if(event.getWorld().getName().equals(game.getId())) {
             game.markWorldLoaded();
         }
     }

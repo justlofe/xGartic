@@ -18,6 +18,8 @@ import java.util.*;
 
 public class Game extends ConfigAccessor {
 
+    private final String id;
+
     private final List<Room> availableRooms = new ArrayList<>();
     private final HashMap<Player, Room> where = new HashMap<>();
 
@@ -40,11 +42,20 @@ public class Game extends ConfigAccessor {
     private boolean worldLoaded = false;
 
     public Game() {
-        gameProvider = new GameProvider(xGartic.getMaps().getMap(), "game-" + UUID.randomUUID());
-        controller = new GameController(this);
-        players = new HashSet<>();
+        id = "game-" + UUID.randomUUID();
 
+        gameProvider = new GameProvider();
+        controller = new GameController(this);
+        Bukkit.getPluginManager().registerEvents(controller, xGartic.I);
+
+        gameProvider.load(xGartic.getMaps().getMap(), id);
+
+        players = new HashSet<>();
         clock = new GameClock(this);
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void markWorldLoaded() {
@@ -88,7 +99,7 @@ public class Game extends ConfigAccessor {
     }
 
     public boolean nextStage() {
-        if(stage + 1 <= maxStage) {
+        if(stage + 1 < maxStage) {
             completed = 0;
             stage++;
             for(int x = 0; x < maxStage; x++) {
@@ -101,6 +112,8 @@ public class Game extends ConfigAccessor {
                 }
                 else if (object instanceof Text) letWrite(object.getMember(), (Build) prev);
             }
+            if(stage % 2 == 0) clock.start(2400);
+            else clock.start(6000);
             return true;
         }
         return false;
@@ -159,7 +172,7 @@ public class Game extends ConfigAccessor {
         if(object instanceof Text text) {
             text.complete(string);
 
-            new IChatMessage(cfg().getString("display.messages.game.text_completed", ""), false)
+            new IChatMessage(cfg().getString("display.messages.game.text_completed", "").replaceAll("%theme%", string), false)
                     .show(player);
 
             completeObject(false);
