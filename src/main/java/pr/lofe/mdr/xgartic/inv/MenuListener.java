@@ -1,29 +1,21 @@
 package pr.lofe.mdr.xgartic.inv;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.event.inventory.PrepareAnvilEvent;
-import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import pr.lofe.mdr.xgartic.api.LobbyDisbandEvent;
 import pr.lofe.mdr.xgartic.config.ConfigAccessor;
 import pr.lofe.mdr.xgartic.lobby.Lobby;
 import pr.lofe.mdr.xgartic.manage.LobbyManager;
 import pr.lofe.mdr.xgartic.manage.MenuManager;
-import pr.lofe.mdr.xgartic.util.TextWrapper;
 import pr.lofe.mdr.xgartic.xGartic;
-
-import java.util.List;
 
 public class MenuListener extends ConfigAccessor implements Listener {
 

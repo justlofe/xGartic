@@ -13,12 +13,11 @@ public class Text extends GameObject {
         this.player = player;
     }
 
-    public boolean complete(@NotNull String string) {
+    public void complete(@NotNull String string) {
         if(!locked) {
             content = string;
-            return locked = true;
+            locked = true;
         }
-        return false;
     }
 
     public @NotNull String content() {

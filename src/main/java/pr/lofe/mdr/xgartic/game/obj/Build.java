@@ -13,12 +13,11 @@ public class Build extends GameObject {
         this.player = player;
     }
 
-    public boolean complete(@NotNull Room room) {
+    public void complete(@NotNull Room room) {
         if(!locked) {
             build = room;
-            return locked = true;
+            locked = true;
         }
-        return false;
     }
 
     public @NotNull Room content() {

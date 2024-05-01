@@ -5,7 +5,6 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pr.lofe.mdr.xgartic.config.ConfigAccessor;
@@ -132,11 +131,13 @@ public class Game extends ConfigAccessor {
         return null;
     }
 
-    private void letBuild(@NotNull Player player, @NotNull Room where, @NotNull Text parent) {
+    private void letBuild(@NotNull Player player, @NotNull Room where, @Nullable Text parent) {
         Location loc = Point.fromPoint(where.spawn(), gameProvider.getWorld());
         this.where.put(player, where);
 
-        new IChatMessage(cfg().getString("display.messages.game.start_build", "").replaceAll("%theme%", parent.content()), false)
+        String theme = parent == null ? "" : parent.content();
+
+        new IChatMessage(cfg().getString("display.messages.game.start_build", "").replaceAll("%theme%", theme), false)
                 .show(player);
 
         player.teleport(loc);
@@ -199,11 +200,12 @@ public class Game extends ConfigAccessor {
     }
 
     private void initFinal() {
-
+        end();
     }
 
     public void end() {
         HandlerList.unregisterAll(controller);
+        gameProvider.unload();
     }
 
     public GameProvider getProvider() {

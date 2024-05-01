@@ -44,7 +44,7 @@ public class Lobby implements GarticHolder {
     }
 
     public String getCode() {
-        return new String(code);
+        return code;
     }
 
     private void update() {
@@ -77,7 +77,7 @@ public class Lobby implements GarticHolder {
     public Player getLeader() { return leader; }
 
     public List<Player> getPlayers() { return players; }
-    public boolean addPlayer(Player player) {
+    public void addPlayer(Player player) {
         if(players.size() < 14 || players.contains(player)) {
             players.add(player);
             update();
@@ -86,9 +86,7 @@ public class Lobby implements GarticHolder {
             modify(inv, player);
             player.openInventory(inv);
 
-            return true;
         }
-        return false;
     }
     public void removePlayer(Player player) {
         players.remove(player);

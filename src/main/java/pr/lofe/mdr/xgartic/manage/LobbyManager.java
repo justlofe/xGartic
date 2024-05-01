@@ -1,16 +1,12 @@
 package pr.lofe.mdr.xgartic.manage;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 import pr.lofe.mdr.xgartic.api.LobbyDisbandEvent;
-import pr.lofe.mdr.xgartic.game.Game;
 import pr.lofe.mdr.xgartic.lobby.Lobby;
 import pr.lofe.mdr.xgartic.xGartic;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class LobbyManager {
@@ -64,13 +60,11 @@ public class LobbyManager {
         return lobbies;
     }
 
-    public boolean disband(Lobby lobby, LobbyDisbandEvent.Reason reason) {
+    public void disband(Lobby lobby, LobbyDisbandEvent.Reason reason) {
         if(lobbies.contains(lobby)) {
             lobby.disband(reason);
             lobbies.remove(lobby);
-            return true;
         }
-        return false;
     }
 
 }

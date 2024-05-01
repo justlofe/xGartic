@@ -2,7 +2,6 @@ package pr.lofe.mdr.xgartic.game;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.WorldCreator;
 import pr.lofe.mdr.xgartic.util.WorldUtil;
 
 public class GameProvider {
@@ -17,7 +16,7 @@ public class GameProvider {
     }
 
     public void unload() {
-        Bukkit.unloadWorld(world, false);
+        WorldUtil.removeWorld(world);
     }
     public World getWorld() {
         return world;

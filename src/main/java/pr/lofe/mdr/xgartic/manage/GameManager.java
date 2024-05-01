@@ -34,7 +34,7 @@ public class GameManager {
         return games;
     }
 
-    public Game startGame(Lobby lobby) {
+    public void startGame(Lobby lobby) {
         Game game = new Game();
         games.add(game);
         tasks.put(lobby, Bukkit.getScheduler().scheduleSyncRepeatingTask(xGartic.I, () -> {
@@ -45,7 +45,6 @@ public class GameManager {
                 Bukkit.getScheduler().cancelTask(tasks.get(lobby));
             }
         }, 10, 5L));
-        return game;
     }
 
 
