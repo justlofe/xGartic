@@ -194,8 +194,8 @@ public class GameController implements Listener {
             if(game.getPlayers().contains(player)) {
                 GameObject obj = game.getByPlayer(player);
                 if(obj instanceof Text text) {
-                    if(text.isCompleted()) event.setCancelled(true);
-                    else game.completeWrite(player, mm.serialize(event.originalMessage()));
+                    if(!text.isCompleted()) game.completeWrite(player, mm.serialize(event.originalMessage()));
+                    event.setCancelled(true);
                 }
             }
         }
