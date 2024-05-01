@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
+import pr.lofe.mdr.xgartic.util.StringUtil;
 
 @SuppressWarnings("unused")
 public class Point {
@@ -46,7 +47,7 @@ public class Point {
         if(unboxed.length == 6 && unboxed[0].equals("point")) {
             boolean allNum = true;
             for(int i = 1; i < 6; i++) {
-                if(!StringUtils.isNumeric(unboxed[i])) {
+                if(!StringUtil.isNumeric(unboxed[i])) {
                     allNum = false;
                     break;
                 }

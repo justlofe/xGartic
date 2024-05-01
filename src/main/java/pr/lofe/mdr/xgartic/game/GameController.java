@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -194,7 +195,7 @@ public class GameController implements Listener {
             if(game.getPlayers().contains(player)) {
                 GameObject obj = game.getByPlayer(player);
                 if(obj instanceof Text text) {
-                    if(!text.isCompleted()) game.completeWrite(player, mm.serialize(event.originalMessage()));
+                    if(!text.isCompleted()) Bukkit.getScheduler().runTask(xGartic.I, () -> game.completeWrite(player, mm.serialize(event.originalMessage())));
                     event.setCancelled(true);
                 }
             }
