@@ -35,7 +35,10 @@ public class DebugCommand extends ConfigAccessor implements CommandExecutor, Tab
                 Inventory inventory = xGartic.getMenus().getNew(type, null);
                 if(inventory != null) player.openInventory(inventory);
             }
-            case "item" -> player.getInventory().addItem(xGartic.getItems().getMenu());
+            case "item" -> {
+                player.sendMessage("Gived menu item");
+                player.getInventory().addItem(xGartic.getItems().getMenu());
+            }
             default -> {}
         }
 
