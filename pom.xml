@@ -72,5 +72,11 @@
           <artifactId>adventure-platform-bukkit</artifactId>
           <version>4.3.2</version>
       </dependency>
+      <dependency>
+          <groupId>dev.jorel</groupId>
+          <artifactId>commandapi-bukkit-core</artifactId>
+          <version>9.3.0</version>
+          <scope>provided</scope>
+      </dependency>
   </dependencies>
 </project>

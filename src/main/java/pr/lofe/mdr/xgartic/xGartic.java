@@ -3,11 +3,14 @@ package pr.lofe.mdr.xgartic;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
+import pr.lofe.mdr.xgartic.debug.AdminCommand;
 import pr.lofe.mdr.xgartic.debug.DebugCommand;
 import pr.lofe.mdr.xgartic.debug.DebugListener;
 import pr.lofe.mdr.xgartic.manage.*;
 
 public final class xGartic extends JavaPlugin {
+
+    private AdminCommand cmd;
 
     public static xGartic I;
 
@@ -38,7 +41,15 @@ public final class xGartic extends JavaPlugin {
             command.setExecutor(debug);
             command.setTabCompleter(debug);
         }
+
+        cmd = new AdminCommand();
     }
+
+    @Override
+    public void onDisable() {
+        cmd.unregister();
+    }
+
 
     public static MapManager getMaps() { return I.mapManager; }
     public static MenuManager getMenus() { return I.menuManager; }

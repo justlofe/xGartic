@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DebugCommand extends ConfigAccessor implements CommandExecutor, TabCompleter {
+
+
+
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (!(commandSender instanceof Player player)) return true;
