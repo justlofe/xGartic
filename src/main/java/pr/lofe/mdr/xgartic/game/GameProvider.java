@@ -8,8 +8,6 @@ public class GameProvider {
 
     private World world;
 
-    public GameProvider() {}
-
     public void load(World base, String id) {
         World world = WorldUtil.copyWorld(base, id);
         this.world = world == null ? Bukkit.getWorld(id) : world;

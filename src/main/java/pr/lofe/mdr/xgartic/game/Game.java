@@ -112,8 +112,7 @@ public class Game extends ConfigAccessor {
                 }
                 else if (object instanceof Text) letWrite(object.getMember(), (Build) prev);
             }
-            if(stage % 2 == 0) clock.start(2400);
-            else clock.start(6000);
+            clock.start(stage % 2 == 0 ? 2400 : 6000);
             return true;
         }
         return false;

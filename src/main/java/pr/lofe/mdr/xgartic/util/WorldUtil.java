@@ -39,9 +39,7 @@ public class WorldUtil {
                 }
             }
         }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        catch (IOException ignored) {}
     }
 
     public static World copyWorld(World originalWorld, String newWorldName) {

@@ -40,9 +40,6 @@ public final class xGartic extends JavaPlugin {
         }
     }
 
-    @Override
-    public void onDisable() {}
-
     public static MapManager getMaps() { return I.mapManager; }
     public static MenuManager getMenus() { return I.menuManager; }
     public static LobbyManager getLobbies() { return I.lobbyManager; }
