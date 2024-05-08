@@ -20,7 +20,7 @@ public final class xGartic extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        saveDefaultConfig();
+        saveDefaultConfig();//
 
         I = this;
         try {mapManager = new MapManager();} catch (RuntimeException ignored) {}
