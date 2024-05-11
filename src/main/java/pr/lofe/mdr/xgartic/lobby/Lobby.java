@@ -13,6 +13,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 import pr.lofe.mdr.xgartic.api.LobbyCreateEvent;
 import pr.lofe.mdr.xgartic.api.LobbyDisbandEvent;
+import pr.lofe.mdr.xgartic.api.LobbyPrivacyEvent;
 import pr.lofe.mdr.xgartic.inv.GarticHolder;
 import pr.lofe.mdr.xgartic.inv.MenuType;
 import pr.lofe.mdr.xgartic.util.CodeUtil;
@@ -64,6 +65,7 @@ public class Lobby implements GarticHolder {
     }
 
     public void setOpened(boolean opened) {
+        Bukkit.getPluginManager().callEvent(new LobbyPrivacyEvent(this, this.opened, opened));
         this.opened = opened;
         update();
     }
