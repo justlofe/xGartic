@@ -5,25 +5,19 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 import pr.lofe.mdr.xgartic.lobby.Lobby;
 
-public class LobbyDisbandEvent extends Event {
+public class LobbyDisbandEvent extends LobbyEvent {
 
     private final static HandlerList handlers = new HandlerList();
-    protected Lobby lobby;
     private final Reason reason;
 
     public LobbyDisbandEvent(Lobby lobby, @NotNull Reason reason) {
-        this.lobby = lobby;
+        super(lobby);
         this.reason = reason;
-    }
-
-    public @NotNull Lobby getLobby() {
-        return lobby;
     }
 
     public @NotNull Reason getReason() {
         return reason;
     }
-
     @Override
     public @NotNull HandlerList getHandlers() {
         return handlers;

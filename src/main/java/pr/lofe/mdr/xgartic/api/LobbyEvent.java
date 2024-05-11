@@ -1,25 +1,24 @@
 package pr.lofe.mdr.xgartic.api;
 
-import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.player.PlayerEvent;
+import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
 import pr.lofe.mdr.xgartic.lobby.Lobby;
 
-public class LobbyCreateEvent extends LobbyEvent {
+public class LobbyEvent extends Event {
 
     private final static HandlerList handlers = new HandlerList();
 
-    private final Player who;
+    protected Lobby lobby;
 
-    public LobbyCreateEvent(@NotNull Lobby lobby, @NotNull Player who) {
-        super(lobby);
-        this.who = who;
+    public LobbyEvent(Lobby lobby) {
+        this.lobby = lobby;
     }
 
-    public Player getWho() {
-        return who;
+    public Lobby getLobby() {
+        return lobby;
     }
+
 
     @Override
     public @NotNull HandlerList getHandlers() {
