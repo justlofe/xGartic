@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import pr.lofe.mdr.xgartic.api.LobbyCreateEvent;
 import pr.lofe.mdr.xgartic.api.LobbyDisbandEvent;
+import pr.lofe.mdr.xgartic.api.LobbyPrivacyEvent;
 
 @SuppressWarnings("deprecation")
 public class DebugListener implements Listener {
@@ -15,6 +16,10 @@ public class DebugListener implements Listener {
 
     @EventHandler public void onLobbyDisband(LobbyDisbandEvent event) {
         Bukkit.broadcastMessage("Lobby disbanded with a reason " + event.getReason().name());
+    }
+
+    @EventHandler public void onLobbyPrivacy(LobbyPrivacyEvent event) {
+        Bukkit.broadcastMessage("Lobby change privacy type from " + event.getOld() + " to " + event.getNew());
     }
 
 }
