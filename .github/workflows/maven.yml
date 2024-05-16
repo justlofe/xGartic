@@ -39,7 +39,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - run: mvn --batch-mode --update-snapshots verify
-    - run: mkdir staging && cp target/*.jar staging
+    - run: mkdir staging && cp target/xGartic-1.0.-SNAPSHOT.jar staging
     - uses: actions/upload-artifact@v4
       with:
-        name: Package
+        name: xGartic
+        path: staging
