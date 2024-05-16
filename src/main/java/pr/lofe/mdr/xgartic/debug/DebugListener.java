@@ -23,8 +23,4 @@ public class DebugListener implements Listener {
         Bukkit.broadcastMessage("Lobby change privacy type from " + event.getOld() + " to " + event.getNew());
     }
 
-    @EventHandler public void onInventoryClick(InventoryClickEvent event) {
-        Bukkit.broadcastMessage("clicked a " + event.getSlot() + " slot");
-    }
-
 }
