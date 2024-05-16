@@ -128,8 +128,8 @@ public class Lobby implements GarticHolder {
             item.editMeta(meta -> {
                 if (opened) meta.lore(TextWrapper.wrapArray(
                         "",
-                        "<white><color:gray>▲ пкм</color> - сдᴇлᴀть пʏбличным</white>",
-                        "<white><color:#e1ff6b>△ шиȹт пкм</color> - сдᴇлᴀть пᴘивᴀтным</white>"));
+                        "<white><color:gray>○ пкм</color> - сдᴇлᴀть пʏбличным</white>",
+                        "<white><color:#e1ff6b>⏺ шиȹт пкм</color> - сдᴇлᴀть пᴘивᴀтным</white>"));
                 else meta.lore(TextWrapper.wrapArray(
                         "",
                         "<white><color:#d4eba7>⏺ пкм</color> - сдᴇлᴀть пʏбличным</white>",
@@ -151,7 +151,7 @@ public class Lobby implements GarticHolder {
                             "",
                             "<white><color:gray>⏵ пкм</color> - нᴀчᴀть игᴘʏ</white>"));
                 }
-                else meta.lore(TextWrapper.wrapArray(//
+                else meta.lore(TextWrapper.wrapArray(
                         "",
                         "<white><color:#4287f5>⏵ пкм</color> - нᴀчᴀть игᴘʏ</white>",
                         "<color:#8a231c>⚠ игᴘʏ можᴇт нᴀчᴀть только</color>",

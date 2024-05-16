@@ -3,6 +3,7 @@ package pr.lofe.mdr.xgartic.debug;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import pr.lofe.mdr.xgartic.api.LobbyCreateEvent;
 import pr.lofe.mdr.xgartic.api.LobbyDisbandEvent;
 import pr.lofe.mdr.xgartic.api.LobbyPrivacyEvent;
@@ -20,6 +21,10 @@ public class DebugListener implements Listener {
 
     @EventHandler public void onLobbyPrivacy(LobbyPrivacyEvent event) {
         Bukkit.broadcastMessage("Lobby change privacy type from " + event.getOld() + " to " + event.getNew());
+    }
+
+    @EventHandler public void onInventoryClick(InventoryClickEvent event) {
+        Bukkit.broadcastMessage("clicked a " + event.getSlot() + " slot");
     }
 
 }
