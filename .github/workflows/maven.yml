@@ -43,4 +43,4 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: xGartic
-        path: staging/xGartic-1.0.-SNAPSHOT.jar
+        path: staging/xGartic-1.0-SNAPSHOT.jar
