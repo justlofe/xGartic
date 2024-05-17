@@ -46,20 +46,15 @@ public class Point {
         if(unboxed.length == 6 && unboxed[0].equals("point")) {
             boolean allNum = true;
             for(int i = 1; i < 6; i++) {
-                if(!StringUtil.isNumeric(unboxed[i])) {
-                    allNum = false;
-                    break;
-                }
+                if(!StringUtil.isNumeric(unboxed[i])) return null;
             }
-            if(allNum) {
-                return new Point(
-                        Double.parseDouble(unboxed[1]),
-                        Double.parseDouble(unboxed[2]),
-                        Double.parseDouble(unboxed[3]),
-                        Float.parseFloat(unboxed[4]),
-                        Float.parseFloat(unboxed[5])
-                );
-            }
+            return new Point(
+                    Double.parseDouble(unboxed[1]),
+                    Double.parseDouble(unboxed[2]),
+                    Double.parseDouble(unboxed[3]),
+                    Float.parseFloat(unboxed[4]),
+                    Float.parseFloat(unboxed[5])
+            );
         }
         return null;
     }

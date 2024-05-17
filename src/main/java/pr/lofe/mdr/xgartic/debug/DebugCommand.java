@@ -1,6 +1,7 @@
 package pr.lofe.mdr.xgartic.debug;
 
 import com.google.common.collect.Lists;
+import org.bukkit.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,6 +16,10 @@ import pr.lofe.mdr.xgartic.util.SortUtil;
 import pr.lofe.mdr.xgartic.util.TextWrapper;
 import pr.lofe.mdr.xgartic.xGartic;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +47,21 @@ public class DebugCommand extends ConfigAccessor implements CommandExecutor, Tab
                 player.sendMessage("Gived menu item");
                 player.getInventory().addItem(xGartic.getItems().getMenu());
             }
+            case "version" -> {
+                player.sendMessage("Trying to parse a version...");
+                InputStream in = xGartic.I.getResource("version.txt");
+                if(in != null) {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                    try {
+                        String line = reader.readLine();
+                        player.sendMessage("You are at version that comes from commit... §9" + line);
+                        return true;
+                    } catch (IOException ignored) {
+                        player.sendMessage("Can`t parse a version! This a sneaky version of plugin.");
+                    }
+                }
+                player.sendMessage("Can`t parse a version! This a sneaky version of plugin.");
+            }
             default -> {}
         }
 
@@ -52,7 +72,7 @@ public class DebugCommand extends ConfigAccessor implements CommandExecutor, Tab
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         switch (strings.length) {
             case 1 -> {
-                return SortUtil.searchFor(strings[0], "menu", "reload", "item");
+                return SortUtil.searchFor(strings[0], "menu", "reload", "item", "version");
             }
             case 2 -> {
                 if(strings[0].equals("menu")) {

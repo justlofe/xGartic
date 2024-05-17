@@ -3,7 +3,6 @@ package pr.lofe.mdr.xgartic.debug;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import pr.lofe.mdr.xgartic.api.LobbyCreateEvent;
 import pr.lofe.mdr.xgartic.api.LobbyDisbandEvent;
 import pr.lofe.mdr.xgartic.api.LobbyPrivacyEvent;
