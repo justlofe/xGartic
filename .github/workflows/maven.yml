@@ -15,6 +15,17 @@ on:
     branches: [ "master" ]
 
 jobs:
+  versionSetup:
+    name: Create A File
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: 1arp/create-a-file-action@0.4.5
+        with:
+          path: 'src/main/resources'
+          isAbsolutePath: false
+          file: 'version.txt'
+          content: "${{ github.head_ref }}.${{ github.sha }}"
   build:
     runs-on: ubuntu-latest
 
