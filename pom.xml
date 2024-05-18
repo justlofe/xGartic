@@ -18,29 +18,24 @@
 
   <build>
     <plugins>
-      <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>3.2.0</version>
-          <executions>
-              <execution>
-                  <id>generate-version</id>
-                  <goals>
-                      <goal>add-resource</goal>
-                  </goals>
-                  <configuration>
-                      <resources>
-                          <resource>
-                              <directory>${project.basedir}</directory>
-                              <includes>
-                                  <include>version.txt</include>
-                              </includes>
-                          </resource>
-                      </resources>
-                  </configuration>
-              </execution>
-          </executions>
-      </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.2.0</version>
+            <executions>
+                <execution>
+                    <id>add-git-commit-id</id>
+                    <phase>initialize</phase>
+                    <goals>
+                        <goal>parse-version</goal>
+                    </goals>
+                    <configuration>
+                        <parseVersionRegex>.+</parseVersionRegex>
+                        <propertyPrefix>git</propertyPrefix>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -64,21 +59,6 @@
         </executions>
       </plugin>
     </plugins>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-        <includes>
-          <include>**/*</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>${project.basedir}</directory>
-        <includes>
-            <include>version.txt</include>
-        </includes>
-      </resource>
-    </resources>
   </build>
 
   <repositories>
