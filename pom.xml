@@ -49,6 +49,12 @@
           <include>**/*</include>
         </includes>
       </resource>
+      <resource>
+        <directory>${project.basedir}</directory>
+        <includes>
+            <include>version.txt</include>
+        </includes>
+      </resource>
     </resources>
   </build>
 
