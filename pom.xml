@@ -19,6 +19,29 @@
   <build>
     <plugins>
       <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>3.2.0</version>
+          <executions>
+              <execution>
+                  <id>generate-version</id>
+                  <goals>
+                      <goal>add-resource</goal>
+                  </goals>
+                  <configuration>
+                      <resources>
+                          <resource>
+                              <directory>${project.basedir}</directory>
+                              <includes>
+                                  <include>version.txt</include>
+                              </includes>
+                          </resource>
+                      </resources>
+                  </configuration>
+              </execution>
+          </executions>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
