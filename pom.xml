@@ -19,19 +19,26 @@
   <build>
     <plugins>
         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>build-helper-maven-plugin</artifactId>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
             <version>3.2.0</version>
             <executions>
                 <execution>
-                    <id>add-git-commit-id</id>
+                    <id>copy-resources</id>
                     <phase>initialize</phase>
                     <goals>
-                        <goal>parse-version</goal>
+                        <goal>copy-resources</goal>
                     </goals>
                     <configuration>
-                        <parseVersionRegex>.+</parseVersionRegex>
-                        <propertyPrefix>git</propertyPrefix>
+                        <outputDirectory>${basedir}/src/main/resources</outputDirectory>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}</directory>
+                                <includes>
+                                    <include>version.txt</include>
+                                </includes>
+                            </resource>
+                        </resources>
                     </configuration>
                 </execution>
             </executions>
