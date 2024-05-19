@@ -1,7 +1,9 @@
 package pr.lofe.mdr.xgartic.cmd;
 
+import dev.jorel.commandapi.arguments.ArgumentSuggestions;
 import dev.jorel.commandapi.arguments.IntegerArgument;
 import dev.jorel.commandapi.arguments.PlayerArgument;
+import dev.jorel.commandapi.arguments.TextArgument;
 import dev.jorel.commandapi.executors.CommandArguments;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
@@ -21,28 +23,41 @@ public class DebugCMD extends Command{
     public DebugCMD() {
         super("gartic");
         cmd.withSubcommands(
-                new Command("version") {
+                new Command("git") {
                     @Override
                     void execute(CommandSender sender, CommandArguments args) {
-                        InputStream in = xGartic.I.getResource("version.txt");
-                        if (in == null) {
-                            sender.sendMessage(TextWrapper.wrap("Невозможно получить версию. Плагин забилжен на коленках у араба."));
-                            return;
-                        }
+                        String arg = args.getRaw("arg");
+                        switch (arg) {
+                            case "version" -> {
+                                InputStream in = xGartic.I.getResource("version.txt");
+                                if (in == null) {
+                                    sender.sendMessage(TextWrapper.wrap("Невозможно получить версию. Плагин забилжен на коленках у араба."));
+                                    return;
+                                }
 
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                        try {
-                            String commit = reader.readLine();
-                            sender.sendMessage(TextWrapper.wrap(String.format(
-                                    "Версия плагина... Commit: <blue><click:open_url:'https://github.com/justlofe/xGartic/commit/%s'>%s</click></blue>",
-                                    commit,
-                                    commit
-                            )));
-                        } catch (IOException ignored) {
-                            sender.sendMessage(TextWrapper.wrap("Невозможно получить версию. Плагин забилжен на коленках у араба."));
+                                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                                try {
+                                    String commit = reader.readLine();
+                                    if(commit == null) throw new IOException();
+
+                                    sender.sendMessage(TextWrapper.wrap(String.format(
+                                            "Версия плагина... Commit: <blue><click:open_url:'https://github.com/justlofe/xGartic/commit/%s'>%s</click></blue>",
+                                            commit,
+                                            commit
+                                    )));
+                                } catch (IOException ignored) {
+                                    sender.sendMessage(TextWrapper.wrap("Невозможно получить версию. Плагин забилжен на коленках у араба."));
+                                }
+                            }
+                            case "url" -> {
+                                sender.sendMessage(TextWrapper.wrap(
+                                        "Repository URL: <blue><click:open_url:'https://github.com/justlofe/xGartic/'>[GitHub]</click></blue>"
+                                ));
+                            }
+                            default -> {}
                         }
                     }
-                }.cmd,
+                }.cmd.withArguments(new TextArgument("arg").replaceSuggestions(ArgumentSuggestions.strings("version", "url"))),
 
                 new Command("item") {
                     @Override
