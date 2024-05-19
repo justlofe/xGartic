@@ -25,8 +25,6 @@ import java.util.List;
 
 public class DebugCommand extends ConfigAccessor implements CommandExecutor, TabCompleter {
 
-
-
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (!(commandSender instanceof Player player)) return true;
@@ -48,19 +46,20 @@ public class DebugCommand extends ConfigAccessor implements CommandExecutor, Tab
                 player.getInventory().addItem(xGartic.getItems().getMenu());
             }
             case "version" -> {
-                player.sendMessage("Trying to parse a version...");
                 InputStream in = xGartic.I.getResource("version.txt");
-                if(in != null) {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                    try {
-                        String line = reader.readLine();
-                        player.sendMessage("You are at version that comes from commit... §9" + line);
-                        return true;
-                    } catch (IOException ignored) {
-                        player.sendMessage("Can`t parse a version! This a sneaky version of plugin.");
-                    }
+                if (in == null) {
+
+                    return true;
                 }
-                player.sendMessage("Can`t parse a version! This a sneaky version of plugin.");
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                try {
+                    String commit = reader.readLine();
+
+                    return true;
+                } catch (IOException ignored) {
+                    player.sendMessage("Can`t parse a version! This a sneaky version of plugin.");
+                }
             }
             default -> {}
         }
