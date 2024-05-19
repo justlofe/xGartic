@@ -43,12 +43,6 @@ public final class xGartic extends JavaPlugin {
             command.setTabCompleter(debug);
         }
 
-        CommandAPI.onLoad(new CommandAPIBukkitConfig(this)
-                .shouldHookPaperReload(true)
-                .silentLogs(false)
-        );
-        CommandAPI.onEnable();
-
         new DebugCMD().register();
     }
 
