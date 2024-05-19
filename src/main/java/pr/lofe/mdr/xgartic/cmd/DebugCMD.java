@@ -47,14 +47,11 @@ public class DebugCMD extends Command{
                 new Command("item") {
                     @Override
                     void execute(CommandSender sender, CommandArguments args) {
-                        Collection<Entity> selected = (Collection<Entity>) args.get("player");
-
                         ItemStack item = xGartic.getItems().getMenu();
                         item.setAmount((Integer) args.get("amount"));
 
-                        for(Entity entity: selected) {
-                            if(entity instanceof Player player) player.getInventory().addItem(item);
-                        }
+                        Player player = (Player) args.get("player");
+                        player.getInventory().addItem(item);
                     }
                 }.cmd.withArguments(new PlayerArgument("player").combineWith(new IntegerArgument("amount", 1, 64))),
 

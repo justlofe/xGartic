@@ -36,13 +36,6 @@ public final class xGartic extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new DebugListener(), this);
 
-        PluginCommand command = getCommand("gartic");
-        if(command != null) {
-            DebugCommand debug = new DebugCommand();
-            command.setExecutor(debug);
-            command.setTabCompleter(debug);
-        }
-
         new DebugCMD().register();
     }
 
