@@ -49,11 +49,9 @@ public class DebugCMD extends Command{
                                     sender.sendMessage(TextWrapper.wrap("Невозможно получить версию. Плагин забилжен на коленках у араба."));
                                 }
                             }
-                            case "url" -> {
-                                sender.sendMessage(TextWrapper.wrap(
-                                        "Repository URL: <blue><click:open_url:'https://github.com/justlofe/xGartic/'>[GitHub]</click></blue>"
-                                ));
-                            }
+                            case "url" -> sender.sendMessage(TextWrapper.wrap(
+                                    "Repository URL: <blue><click:open_url:'https://github.com/justlofe/xGartic/'>[GitHub]</click></blue>"
+                            ));
                             default -> {}
                         }
                     }
@@ -71,7 +69,6 @@ public class DebugCMD extends Command{
                 }.cmd.withArguments(new PlayerArgument("player").combineWith(new IntegerArgument("amount", 1, 64))),
 
                 new Command("reload") {
-
                     @Override
                     void execute(CommandSender sender, CommandArguments args) {
                         xGartic.I.reloadConfig();

@@ -1,13 +1,9 @@
 package pr.lofe.mdr.xgartic;
 
 import dev.jorel.commandapi.CommandAPI;
-import dev.jorel.commandapi.CommandAPIBukkitConfig;
-import dev.jorel.commandapi.CommandAPICommand;
 import org.bukkit.Bukkit;
-import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 import pr.lofe.mdr.xgartic.cmd.DebugCMD;
-import pr.lofe.mdr.xgartic.debug.DebugCommand;
 import pr.lofe.mdr.xgartic.debug.DebugListener;
 import pr.lofe.mdr.xgartic.manage.*;
 
@@ -41,7 +37,7 @@ public final class xGartic extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        CommandAPI.unregister("debug");
+        CommandAPI.unregister("gartic");
     }
 
     public static MapManager getMaps() { return I.mapManager; }
