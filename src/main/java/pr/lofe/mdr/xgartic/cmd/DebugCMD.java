@@ -6,7 +6,6 @@ import dev.jorel.commandapi.arguments.PlayerArgument;
 import dev.jorel.commandapi.arguments.TextArgument;
 import dev.jorel.commandapi.executors.CommandArguments;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import pr.lofe.mdr.xgartic.util.TextWrapper;
@@ -16,7 +15,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Collection;
 
 public class DebugCMD extends Command{
 
@@ -27,6 +25,7 @@ public class DebugCMD extends Command{
                     @Override
                     void execute(CommandSender sender, CommandArguments args) {
                         String arg = args.getRaw("arg");
+                        assert arg != null;
                         switch (arg) {
                             case "version" -> {
                                 InputStream in = xGartic.I.getResource("version.txt");
@@ -64,6 +63,7 @@ public class DebugCMD extends Command{
                         item.setAmount((Integer) args.get("amount"));
 
                         Player player = (Player) args.get("player");
+                        assert player != null;
                         player.getInventory().addItem(item);
                     }
                 }.cmd.withArguments(new PlayerArgument("player").combineWith(new IntegerArgument("amount", 1, 64))),

@@ -19,8 +19,4 @@ public abstract class Command {
         cmd.register();
     }
 
-    public void unregister() {
-        CommandAPI.unregister(cmd.getName());
-    }
-
 }
