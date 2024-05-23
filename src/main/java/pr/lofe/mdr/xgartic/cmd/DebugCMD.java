@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class DebugCMD extends Command{
+public class DebugCMD extends Command {
 
     public DebugCMD() {
         super("gartic");
