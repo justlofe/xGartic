@@ -86,12 +86,13 @@ public class DebugCMD extends Command {
                         String output = "";
 
                         if(type.equals("mini")) output = TextWrapper.mini(input);
+                        else if (type.equals("color")) output = input;
 
                         sender.sendMessage(TextWrapper.wrap(String.format("Input: \"%s\"<br>Wrapper: %s<br>Output: \"<click:copy_to_clipboard:'%s'>%s</click>\"", input, type, output, output)));
                     }
 
                 }.cmd.withArguments(
-                        new TextArgument("type").replaceSuggestions(ArgumentSuggestions.strings("mini")),
+                        new TextArgument("type").replaceSuggestions(ArgumentSuggestions.strings("mini", "color")),
                         new TextArgument("input"))
         );
     }

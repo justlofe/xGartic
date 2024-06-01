@@ -159,6 +159,7 @@ public class Game extends ConfigAccessor {
             if(room != null) build.complete(room);
 
             player.setGameMode(GameMode.ADVENTURE);
+            player.setAllowFlight(true);
             player.setFlying(true);
             completeObject(false);
         }

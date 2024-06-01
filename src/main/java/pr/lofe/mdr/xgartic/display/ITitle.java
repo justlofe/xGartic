@@ -30,7 +30,7 @@ public class ITitle extends DisplayObject {
     private String format(String string) {
         ConfigAccessor data = new ConfigAccessor();
         return string
-                .replaceAll("%black%", data.cfg().getString("", "display.title.black"));
+                .replaceAll("%black%", data.cfg().getString("display.title.black", ""));
     }
 
     @Override
