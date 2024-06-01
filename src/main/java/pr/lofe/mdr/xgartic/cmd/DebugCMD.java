@@ -8,6 +8,8 @@ import dev.jorel.commandapi.executors.CommandArguments;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import pr.lofe.mdr.xgartic.config.ConfigAccessor;
+import pr.lofe.mdr.xgartic.display.IChatMessage;
 import pr.lofe.mdr.xgartic.util.TextWrapper;
 import pr.lofe.mdr.xgartic.xGartic;
 
@@ -87,6 +89,16 @@ public class DebugCMD extends Command {
 
                         if(type.equals("mini")) output = TextWrapper.mini(input);
                         else if (type.equals("color")) output = input;
+
+                        switch (type) {
+                            case "mini" -> output = TextWrapper.mini(input);
+                            case "color" -> output = input;
+                            case "config" -> {
+                                ConfigAccessor cfg = new ConfigAccessor();
+                                sender.sendMessage(TextWrapper.wrap(cfg.cfg().getString(input, "")));
+                                return;
+                            }
+                        }
 
                         sender.sendMessage(TextWrapper.wrap(String.format("Input: \"%s\"<br>Wrapper: %s<br>Output: \"<click:copy_to_clipboard:'%s'>%s</click>\"", input, type, output, output)));
                     }
