@@ -1,13 +1,17 @@
 package pr.lofe.mdr.xgartic.manage;
 
 import org.bukkit.Bukkit;
+import org.bukkit.SoundCategory;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import pr.lofe.mdr.xgartic.api.LobbyDisbandEvent;
+import pr.lofe.mdr.xgartic.display.ISound;
+import pr.lofe.mdr.xgartic.display.ITitle;
 import pr.lofe.mdr.xgartic.game.Game;
 import pr.lofe.mdr.xgartic.lobby.Lobby;
 import pr.lofe.mdr.xgartic.xGartic;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -35,6 +39,15 @@ public class GameManager {
     }
 
     public void startGame(Lobby lobby) {
+        ITitle title = new ITitle("зᴀпʏск...", "%black%", Duration.ofMillis(500), Duration.ofSeconds(Integer.MAX_VALUE), Duration.ZERO);
+        ISound sound = new ISound("custom.misc.teleport", .8f, 1);
+        for(Player player: lobby.getPlayers()) {
+            player.closeInventory();
+            title.show(player);
+            sound.show(player);
+        }
+
+
         Game game = new Game();
         games.add(game);
         tasks.put(lobby, Bukkit.getScheduler().scheduleSyncRepeatingTask(xGartic.I, () -> {

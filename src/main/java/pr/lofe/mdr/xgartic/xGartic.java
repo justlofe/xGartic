@@ -3,6 +3,7 @@ package pr.lofe.mdr.xgartic;
 import dev.jorel.commandapi.CommandAPI;
 import org.bukkit.plugin.java.JavaPlugin;
 import pr.lofe.mdr.xgartic.cmd.DebugCMD;
+import pr.lofe.mdr.xgartic.cmd.GameCommand;
 import pr.lofe.mdr.xgartic.manage.*;
 
 public final class xGartic extends JavaPlugin {
@@ -29,11 +30,13 @@ public final class xGartic extends JavaPlugin {
         displayManager = new DisplayManager();
 
         new DebugCMD().register();
+        new GameCommand().register();
     }
 
     @Override
     public void onDisable() {
         CommandAPI.unregister("gartic");
+        CommandAPI.unregister("done");
     }
 
     public static MapManager getMaps() { return I.mapManager; }

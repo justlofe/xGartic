@@ -9,10 +9,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pr.lofe.mdr.xgartic.config.ConfigAccessor;
 import pr.lofe.mdr.xgartic.display.IChatMessage;
+import pr.lofe.mdr.xgartic.display.ISound;
+import pr.lofe.mdr.xgartic.display.ITitle;
 import pr.lofe.mdr.xgartic.game.obj.*;
 import pr.lofe.mdr.xgartic.util.QueueUtil;
 import pr.lofe.mdr.xgartic.xGartic;
 
+import java.time.Duration;
 import java.util.*;
 
 public class Game extends ConfigAccessor {
@@ -20,7 +23,7 @@ public class Game extends ConfigAccessor {
     private final String id;
 
     private final List<Room> availableRooms = new ArrayList<>();
-    private final HashMap<Player, Room> where = new HashMap<>();
+    public final HashMap<Player, Room> where = new HashMap<>();
 
     private final GameProvider gameProvider;
     private final GameController controller;
@@ -95,6 +98,11 @@ public class Game extends ConfigAccessor {
                 else chains[x][z] = new Build((Player) players[x][z]);
             }
         }
+
+        ITitle title = new ITitle("", "%black%", Duration.ZERO, Duration.ofSeconds(1), Duration.ofMillis(250));
+        Player[] act = this.players.toArray(new Player[0]);
+        title.show(act);
+
         nextStage();
     }
 
@@ -141,8 +149,10 @@ public class Game extends ConfigAccessor {
 
         player.teleport(loc);
         player.setGameMode(GameMode.CREATIVE);
+
+        new ISound("entity.experience_orb.pickup", 1f, 2f).show(player);
     }
-    private void completeBuild(Player player) {
+    public void completeBuild(Player player) {
         GameObject object = getByPlayer(player);
         if(object instanceof Build build)  {
             Room room = this.where.remove(player);
@@ -167,6 +177,8 @@ public class Game extends ConfigAccessor {
             new IChatMessage(cfg().getString("display.messages.game.start_texting", ""), false)
                     .show(player);
         }
+
+        new ISound("entity.experience_orb.pickup", 1f, 2f).show(player);
     }
     public void completeWrite(Player player, String string) {
         GameObject object = getByPlayer(player);
