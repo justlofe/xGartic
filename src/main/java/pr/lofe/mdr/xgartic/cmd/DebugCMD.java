@@ -74,7 +74,25 @@ public class DebugCMD extends Command {
                         xGartic.I.reloadConfig();
                         sender.sendMessage(TextWrapper.wrap("Конфигурация перезагружена."));
                     }
-                }.cmd
+                }.cmd,
+
+                new Command("TextWrapper") {
+
+                    @Override
+                    void execute(CommandSender sender, CommandArguments args) {
+                        String type = args.getRaw("type"), input = args.getRaw("input");
+                        assert type != null && input != null;
+
+                        String output = "";
+
+                        if(type.equals("mini")) output = TextWrapper.mini(input);
+
+                        sender.sendMessage(TextWrapper.wrap(String.format("Input: \"%s\"<br>Wrapper: %s<br>Output: \"<click:copy_to_clipboard:'%s'>%s</click>\"", input, type, output, output)));
+                    }
+
+                }.cmd.withArguments(
+                        new TextArgument("type").replaceSuggestions(ArgumentSuggestions.strings("mini")),
+                        new TextArgument("input"))
         );
     }
 
