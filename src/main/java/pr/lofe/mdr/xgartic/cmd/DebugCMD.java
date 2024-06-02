@@ -20,8 +20,6 @@ import java.io.InputStreamReader;
 
 public class DebugCMD extends Command {
 
-    IBossBar debugger = new IBossBar("");
-
     public DebugCMD() {
         super("gartic");
         cmd.withSubcommands(
