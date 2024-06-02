@@ -48,6 +48,7 @@ public class TextWrapper {
         add("0,꒢");
         add("_,꒣");
         add(".,꒤");
+        add(",,꒥");
         add("+,꒦");
     }};
 

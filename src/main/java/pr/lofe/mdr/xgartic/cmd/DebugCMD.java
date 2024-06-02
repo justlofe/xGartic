@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import pr.lofe.mdr.xgartic.config.ConfigAccessor;
-import pr.lofe.mdr.xgartic.display.IChatMessage;
+import pr.lofe.mdr.xgartic.display.IBossBar;
 import pr.lofe.mdr.xgartic.util.TextWrapper;
 import pr.lofe.mdr.xgartic.xGartic;
 
@@ -19,6 +19,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class DebugCMD extends Command {
+
+    IBossBar debugger = new IBossBar("");
 
     public DebugCMD() {
         super("gartic");

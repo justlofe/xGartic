@@ -80,7 +80,8 @@ public class Game extends ConfigAccessor {
     }
 
     public Collection<Player> getPlayers() {
-        return players;
+        if(players != null) return players;
+        return new ArrayList<>();
     }
 
     public HashMap<Player, Room> getAssigns() {
