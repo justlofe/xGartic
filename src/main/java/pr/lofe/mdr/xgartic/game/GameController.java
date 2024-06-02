@@ -194,7 +194,9 @@ public class GameController implements Listener {
             Player player = event.getPlayer();
             if(game.getPlayers().contains(player)) {
                 GameObject obj = game.getByPlayer(player);
+                Bukkit.broadcastMessage("Player in game check");
                 if(obj instanceof Text text) {
+                    Bukkit.broadcastMessage("Player on a text stage, completed=" + text.isCompleted());
                     if(!text.isCompleted()) Bukkit.getScheduler().runTask(xGartic.I, () -> game.completeWrite(player, mm.serialize(event.originalMessage())));
                     event.setCancelled(true);
                 }
